@@ -9,30 +9,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private TextView nameTextView;
-    private Button backButton;
-    
+    TextView nameText;
+    Button goBackButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        
-        // یافتن عناصر رابط کاربری
-        nameTextView = findViewById(R.id.nameTextView);
-        backButton = findViewById(R.id.backButton);
-        
-        // دریافت اطلاعات از intent
-        String userName = getIntent().getStringExtra("USER_NAME");
-        
-        // نمایش اطلاعات در UI
-        nameTextView.setText("نام: " + userName);
-        
-        // رویداد کلیک برای دکمه بازگشت
-        backButton.setOnClickListener(new View.OnClickListener() {
+
+        nameText = findViewById(R.id.nameTextView);
+        goBackButton = findViewById(R.id.backButton);
+
+        String name = getIntent().getStringExtra("USER_NAME");
+        nameText.setText("نام: " + name);
+
+        goBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); // بستن فعالیت فعلی و بازگشت به فعالیت قبلی
+                finish();
             }
         });
     }
-} 
+}
